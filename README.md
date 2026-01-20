@@ -1,5 +1,7 @@
 # Kanva Deployment
 
+<img src="images/kanva.png" alt="Kanva" width="600">
+
 Deployment scripts and configuration for [Kanva](https://human-driven.ai) - an AI prediction platform that enables domain experts to create state-of-the-art machine learning models based on historical data.
 
 Kanva runs entirely within your infrastructure: no external services are used, no pre-trained models are required, and no data leaves the platform.
