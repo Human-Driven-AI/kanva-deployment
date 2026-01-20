@@ -1,6 +1,6 @@
 # Kanva - Linux VM Installation Guide
 
-![Kanva on Linux VM](../images/kanva-linux-vm.png)
+<img src="../images/kanva-linux-vm.png" alt="Kanva on Linux VM" width="600">
 
 This guide will help you install and run Kanva on Debian, Ubuntu, or other Linux distributions.
 

@@ -1,6 +1,6 @@
 # Kanva - Windows VM Installation Guide
 
-![Kanva on Windows VM](../images/kanva-windows-vm.png)
+<img src="../images/kanva-windows-vm.png" alt="Kanva on Windows VM" width="600">
 
 > **Note:** This deployment uses a local SQLite database by default, which is suitable for pilot projects and evaluation. For production use, configure an external database in `pilot.env`.
 
