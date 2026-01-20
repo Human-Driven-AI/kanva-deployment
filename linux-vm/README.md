@@ -1,5 +1,7 @@
 # Kanva - Linux VM Installation Guide
 
+![Kanva on Linux VM](../images/kanva-linux-vm.png)
+
 This guide will help you install and run Kanva on Debian, Ubuntu, or other Linux distributions.
 
 > **Note:** This deployment uses a local SQLite database by default, which is suitable for pilot projects and evaluation. For production use, configure an external database in `pilot.env`.
