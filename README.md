@@ -1,6 +1,6 @@
 # Kanva Deployment
 
-<img src="images/kanva.png" alt="Kanva" width="600">
+<img src="images/kanva.png" alt="Kanva" width="450">
 
 Deployment scripts and configuration for [Kanva](https://human-driven.ai) - an AI prediction platform that enables domain experts to create state-of-the-art machine learning models based on historical data.
 
