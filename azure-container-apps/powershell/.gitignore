@@ -1,0 +1,10 @@
+# User-specific configuration (contains secrets)
+config/variables.ps1
+config/variables-*.ps1
+!config/variables-sample.ps1
+
+# Test files
+test.ps1
+
+# Generated files
+*.log

@@ -1,0 +1,18 @@
+param(
+    [string]$customConfig
+)
+
+. "$PSScriptRoot\..\utils\utils.ps1"
+. "$PSScriptRoot\..\config\variables.ps1"
+if ($customConfig) {
+    . "$PSScriptRoot\..\config\$customConfig"
+}
+
+Write-Host "Stopping container apps"
+$revision = "${delphiAppName}--${delphiLatestImage}"
+az containerapp revision deactivate --revision $revision --resource-group $resourceGroupName
+$revision = "${pythonessAppName}--${pythonessLatestImage}"
+az containerapp revision deactivate --revision $revision --resource-group $resourceGroupName
+$revision = "${hubAppName}--${hubLatestImage}"
+az containerapp revision deactivate --revision $revision --resource-group $resourceGroupName
+Write-Host "Done"

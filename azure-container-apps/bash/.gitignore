@@ -1,0 +1,7 @@
+# User-specific configuration (contains secrets)
+config/variables.sh
+config/variables-*.sh
+!config/variables-sample.sh
+
+# Generated files
+*.log

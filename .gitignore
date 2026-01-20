@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+
+# Editor/tool files
+null
+
+# Generated files
+*.log
+*.yaml
