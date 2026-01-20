@@ -1,5 +1,7 @@
 # Azure Container Apps Deployment (PowerShell)
 
+<img src="../../images/kanva-powershell.png" alt="Kanva PowerShell Setup" width="600">
+
 PowerShell scripts to deploy Kanva to Azure Container Apps.
 
 ## Requirements
