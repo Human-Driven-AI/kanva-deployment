@@ -162,6 +162,79 @@ Edit `pilot.env` to configure:
 - Security keys
 - And more
 
+### Secret Stores (`pilot.env`)
+
+Set `SecretsStore` based on how you want Kanva to store and fetch credentials:
+- `SecretsStore=Local` for local pilot mode (default)
+- `SecretsStore=AzureKeyVault` for Azure Key Vault
+- `SecretsStore=GcpSecretManager` for GCP Secret Manager
+
+#### Azure Key Vault (`SecretsStore=AzureKeyVault`)
+
+Set:
+- `KeyVaultUrl` (for example `https://<your-vault>.vault.azure.net/`)
+- `ManagedIdentityClientId` only when Kanva runs in Azure with a user-assigned managed identity
+
+Find or create a user-assigned managed identity:
+
+```bash
+# list identities
+az identity list --output table
+
+# create one if needed
+az identity create --name <identity-name> --resource-group <resource-group> --location <region>
+```
+
+Grant that identity access to the same vault configured in `KeyVaultUrl`:
+
+```bash
+# if vault uses access policies
+az keyvault set-policy \
+  --name <vault-name> \
+  --object-id <managed-identity-principal-id> \
+  --secret-permissions get list set delete recover backup restore
+```
+
+```bash
+# if vault uses RBAC (enableRbacAuthorization=true)
+az role assignment create \
+  --assignee <managed-identity-principal-id> \
+  --role "Key Vault Secrets User" \
+  --scope /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.KeyVault/vaults/<vault-name>
+```
+
+For local development (non-Azure hosts), keep `ManagedIdentityClientId` empty and use Azure CLI login (`az login`).
+
+#### GCP Secret Manager (`SecretsStore=GcpSecretManager`)
+
+Set:
+- `GcpProjectId`
+- ADC credentials for the runtime (service account key, workload identity, or local ADC login)
+
+Typical setup:
+
+```bash
+# create service account (if needed)
+gcloud iam service-accounts create <sa-name> --project <project-id>
+
+# grant secret read access
+gcloud projects add-iam-policy-binding <project-id> \
+  --member "serviceAccount:<sa-name>@<project-id>.iam.gserviceaccount.com" \
+  --role "roles/secretmanager.secretAccessor"
+```
+
+```bash
+# local development ADC
+gcloud auth application-default login
+```
+
+```bash
+# service account key based ADC (if required)
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json
+```
+
+For the full variable reference and examples, see [configuration_reference.md](../configuration_reference.md).
+
 After changing `pilot.env`, restart the services:
 
 ```bash

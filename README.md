@@ -26,6 +26,12 @@ Azure Container Apps deployment using the reference architecture.
 - Interactive setup with modular steps - use existing resources or create new ones
 - Suitable for production Azure deployments
 
+## Configuration Reference
+
+For a complete reference of deployment configuration values, including `linux-vm/pilot.env` and cloud secret manager settings, see:
+
+- [configuration_reference.md](configuration_reference.md)
+
 ## Requirements
 
 All deployment methods require container registry credentials from Human-Driven AI. Contact [contact@human-driven.ai](mailto:contact@human-driven.ai) to obtain access.
